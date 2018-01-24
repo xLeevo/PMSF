@@ -488,7 +488,7 @@ function pokemonLabel(item) {
     }
     contentstring += '<span> - </span>' +
         '<small>' +
-        '<a href="https://pokemon.gameinfo.io/en/pokemon/' + id + '" target="_blank" title="View in Pokedex">#' + id + '</a>' +
+        '<a href="https://pokemon.gameinfo.io/en/pokemon/' + id + '" target="_blank" title="View in Pokedex" style="font-size:20px"> <i class="fa fa-slack" aria-hidden="true"></i>' + id + '</a>' +
         '</small><br>' +
         '<span><font size="4"> ' + genderType[gender - 1] + '</font></span>' +
         '<span> - </span>' +

@@ -489,24 +489,24 @@ function pokemonLabel(item) {
     contentstring += '<span> - </span>' +
         '<small>' +
         '<a href="https://pokemon.gameinfo.io/en/pokemon/' + id + '" target="_blank" title="View in Pokedex">#' + id + '</a>' +
-        '</small>' +
+        '</small><br>' +
         '<span><font size="4"> ' + genderType[gender - 1] + '</font></span>' +
         '<span> - </span>' +
         '<small>' + typesDisplay + '</small>' +
         '</div>' +
         '<div style="font-weight: bold">' +
-		'<a href="javascript:void(0)" onclick="javascript:openMapDirections(' + latitude + ', ' + longitude + ')" title="View in Maps">Route </a>' +
         //'Disappears at ' + getTimeStr(disappearTime) +
-        '<br> <span class="label-countdown" style="background-color: #fffaaa" disappears-at="' + disappearTime + '">(00m00s)</span>' + ' verbleibend<br>' +
-        '<font size="1">(Despawn um ' + getTimeStr(disappearTime) + ')</font><br><br>' +
+        '<br> <span class="label-countdown" style="background-color: #fffaaa;font-size: 15px" disappears-at="' + disappearTime + '">(00m00s)</span>' + ' verbleibend<br>' +
+        '<font size="1" style="font-weight: normal;">(Despawn um ' + getTimeStr(disappearTime) + ')</font><br><br>' +
         '</div>' +
         details +
         '<br><div>' +
 		'<span style="font-weight: bold">Optionen für ' + name + ':</span><br>' +
-        '<a href="javascript:excludePokemon(' + id + ')" title="Alle dieser Spezies ausblenden"><i class="fa fa-ban" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
-        '<a href="javascript:notifyAboutPokemon(' + id + ')" title="Favorisieren"><i class="fa fa-star" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
-        '<a href="javascript:removePokemonMarker(\'' + encounterId + '\')" title="Dieses entfernen"><i class="fa fa-trash" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
-        '<a href="javascript:void(0);" onclick="javascript:toggleOtherPokemon(' + id + ');" title="Andere Arten aus/einblenden"><i class="fa fa-retweet" aria-hidden="true" style="font-size:32px"></i></a><br>' +
+			'<a href="javascript:excludePokemon(' + id + ')" title="Alle dieser Spezies ausblenden"><i class="fa fa-ban" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
+			'<a href="javascript:notifyAboutPokemon(' + id + ')" title="Favorisieren"><i class="fa fa-star" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
+			'<a href="javascript:removePokemonMarker(\'' + encounterId + '\')" title="Dieses entfernen"><i class="fa fa-trash" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
+			'<a href="javascript:void(0);" onclick="javascript:toggleOtherPokemon(' + id + ');" title="Andere Arten aus/einblenden"><i class="fa fa-retweet" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
+			'<a href="javascript:void(0)" onclick="javascript:openMapDirections(' + latitude + ', ' + longitude + ')" title="Route zum Ort aufrufen"><i class="fa fa-map" aria-hidden="true" style="font-size:32px"></i></a><br>' +
 		'</div>'
     return contentstring
 }

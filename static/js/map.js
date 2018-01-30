@@ -100,7 +100,7 @@ var noParkInfo
 createjs.Sound.registerSound('static/sounds/ding.mp3', 'ding')
 
 
-var genderType = ['♂', '♀', '⚲']
+var genderType = ['♂', '♀', 'N/A']
 var unownForm = ['unset', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!', '?']
 var cpMultiplier = [0.094, 0.16639787, 0.21573247, 0.25572005, 0.29024988, 0.3210876, 0.34921268, 0.37523559, 0.39956728, 0.42250001, 0.44310755, 0.46279839, 0.48168495, 0.49985844, 0.51739395, 0.53435433, 0.55079269, 0.56675452, 0.58227891, 0.59740001, 0.61215729, 0.62656713, 0.64065295, 0.65443563, 0.667934, 0.68116492, 0.69414365, 0.70688421, 0.71939909, 0.7317, 0.73776948, 0.74378943, 0.74976104, 0.75568551, 0.76156384, 0.76739717, 0.7731865, 0.77893275, 0.7846369, 0.79030001]
 
@@ -499,7 +499,7 @@ function pokemonLabel(item) {
         var iv = getIv(atk, def, sta)
         details =
             '<div>' +
-            'IV: ' + iv.toFixed(1) + '% (' + atk + '/' + def + '/' + sta + ')' +
+            '<b><font size="4"> IV: ' + iv.toFixed(1) + '%</font></b>(' + atk + '/' + def + '/' + sta + ')' +
             '</div>'
 
         if (cp != null && (cpMultiplier != null || level != null)) {
@@ -511,7 +511,7 @@ function pokemonLabel(item) {
             }
             details +=
                 '<div>' +
-                i8ln('CP') + ' : ' + cp + ' | ' + i8ln('Level') + ' : ' + pokemonLevel +
+                '<b>' + i8ln('WP') + ' : ' + cp + ' | Level: ' + pokemonLevel + '</b>' +
                 '</div>'
         }
         details +=
@@ -522,25 +522,24 @@ function pokemonLabel(item) {
     if (weatherBoostedCondition !== 0) {
         details +=
             '<div>' +
-            i8ln('Weather') + ': ' + i8ln(weather[weatherBoostedCondition]) +
+            i8ln('Wetter') + ': ' + i8ln(weather[weatherBoostedCondition]) +
             '</div>'
     }
     if (gender != null) {
         details +=
-            '<div>' +
-            i8ln('Gender') + ': ' + genderType[gender - 1]
+            '<div>'
         if (weight != null) {
-            details += ' | ' + i8ln('Weight') + ': ' + weight.toFixed(2) + 'kg'
+            details += '' + i8ln('Gewicht') + ': ' + weight.toFixed(2) + 'kg'
         }
         if (height != null) {
-            details += ' | ' + i8ln('Height') + ': ' + height.toFixed(2) + 'm'
+            details += ' | ' + i8ln('Größe') + ': ' + height.toFixed(2) + 'm'
         }
         details +=
             '</div>'
     }
     var contentstring =
         '<div>' +
-        '<b>' + name + '</b>'
+        '<b><font size="4">' + name + '</font></b>'
     if (id === 201 && form !== null && form > 0) {
         contentstring += ' (' + unownForm[item['form']] + ')'
     }
@@ -550,26 +549,31 @@ function pokemonLabel(item) {
     }
     contentstring += '<span> - </span>' +
         '<small>' +
-        '<a href="https://pokemon.gameinfo.io/' + languageSite + '/pokemon/' + id + '" target="_blank" title="' + i8ln('View in Pokedex') + '">#' + id + '</a>' +
+        '<a href="https://pokemon.gameinfo.io/' + languageSite + '/pokemon/' + id + '" target="_blank" title="' + i8ln('View in Pokedex') + ' " style="font-size:20px"><i class="fa fa-slack" aria-hidden="true"></i>' + id + '</a>' +
         '</small>' +
-        '<span> ' + rarityDisplay + '</span>' +
+        '<span><font size="4" style="font-weight: bold"> ' + genderType[gender - 1] + '</font></span>' +
         '<span> - </span>' +
         '<small>' + typesDisplay + '</small>' +
         '</div>' +
         '<div>' +
-        i8ln('Disappears at') + ' ' + getTimeStr(disappearTime) +
-        ' <span class="label-countdown" disappears-at="' + disappearTime + '">(00m00s)</span>' +
+        //i8ln('Disappears at') + ' ' + getTimeStr(disappearTime) +
+        //' <span class="label-countdown" disappears-at="' + disappearTime + '">(00m00s)</span>' +
+        '<br> <span class="label-countdown" style="background-color: #fffaaa;font-size: 15px;font-weight: bold" disappears-at="' + disappearTime + '">(00m00s)</span>' + i8ln('verbleibend') +'<br>' +
+        '<font size="1" style="font-weight: normal;">'+ i8ln('(Despawn um ') + getTimeStr(disappearTime) + i8ln(')') + '</font><br><br>' +
         '</div>' +
-        '<div>' +
-        i8ln('Location') + ': <a href="javascript:void(0)" onclick="javascript:openMapDirections(' + latitude + ', ' + longitude + ')" title="' + i8ln('View in Maps') + '">' + coordText + '</a>' +
-        '</div>' +
+        //'<div>' +
+        //i8ln('Location') + ': <a href="javascript:void(0)" onclick="javascript:openMapDirections(' + latitude + ', ' + longitude + ')" title="' + i8ln('View in Maps') + '">' + coordText + '</a>' +
+        //'</div>' +
         details +
-        '<div>' +
-        '<a href="javascript:excludePokemon(' + id + ')">' + i8ln('Exclude') + '</a>&nbsp&nbsp' +
-        '<a href="javascript:notifyAboutPokemon(' + id + ')">' + i8ln('Notify') + '</a>&nbsp&nbsp' +
-        '<a href="javascript:removePokemonMarker(\'' + encounterId + '\')">' + i8ln('Remove') + '</a>&nbsp&nbsp' +
-        '<a href="javascript:void(0);" onclick="javascript:toggleOtherPokemon(' + id + ');" title="' + i8ln('Toggle display of other Pokemon') + '">' + i8ln('Toggle Others') + '</a>' +
-        '</div>'
+        '<br><div>' +
+		'<span style="font-weight: bold">Optionen für ' + name + ':</span><br>' +
+			'<a href="javascript:excludePokemon(' + id + ')" title="Alle dieser Spezies ausblenden"><i class="fa fa-ban" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
+			'<a href="javascript:notifyAboutPokemon(' + id + ')" title="Favorisieren"><i class="fa fa-star" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
+			'<a href="javascript:removeNotifyAboutPokemon(' + id + ')" title="Favorisierung aufheben"><i class="fa fa-star-o" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
+			'<a href="javascript:removePokemonMarker(\'' + encounterId + '\')" title="Dieses entfernen"><i class="fa fa-trash" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
+			'<a href="javascript:void(0);" onclick="javascript:toggleOtherPokemon(' + id + ');" title="Andere Arten aus/einblenden"><i class="fa fa-retweet" aria-hidden="true" style="font-size:32px"></i></a>&nbsp&nbsp' +
+			'<a href="javascript:void(0)" onclick="javascript:openMapDirections(' + latitude + ', ' + longitude + ')" title="Route zum Ort aufrufen"><i class="fa fa-map" aria-hidden="true" style="font-size:32px"></i></a><br>' +
+		'</div>'
     return contentstring
 }
 
@@ -3312,4 +3316,20 @@ function checkAndCreateSound(pokemonId = 0) {
             createjs.Sound.play(pokemonId)
         }
     }
+}
+
+function removeNotifyAboutPokemon(id) { // eslint-disable-line no-unused-vars
+    //altes Ding entfernen
+    var arr = $selectPokemonNotify.val().split(',')
+    var index = arr.indexOf(id.toString())
+    if(index && index >= 0) {
+        arr.splice(index, 1)
+        
+        $selectPokemonNotify.val(
+            arr.join(',')
+        ).trigger('change')
+    }
+  
+    //neues Ding auch entfernen
+    $('label[for="notify-pokemon"] .pokemon-list .pokemon-icon-sprite[data-value="' + id + '"]').removeClass('active')
 }

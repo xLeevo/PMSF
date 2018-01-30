@@ -1071,7 +1071,7 @@ var StoreOptions = {
         },
     'gymMarkerStyle':
         {
-            default: gymStyle,
+            default: 'shield',
             type: StoreTypes.String
         },
     'zoomLevel':

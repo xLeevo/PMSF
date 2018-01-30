@@ -167,7 +167,7 @@ $noIconNotifySizeModifier = false;                                  // true/fals
 $iconNotifySizeModifier = 15;                                       // 0, 15, 30, 45
 
 $noGymStyle = false;                                                // true/false
-$gymStyle = 'ingame';                                               // ingame, shield
+$gymStyle = 'ingame';                                               // ingame, shield, classic
 
 $noLocationStyle = false;                                           // true/false
 $locationStyle = 'none';                                            // none, google, red, red_animated, blue, blue_animated, yellow, yellow_animated, pokesition, pokeball

@@ -12,6 +12,7 @@ function countMarkers(map) { // eslint-disable-line no-unused-vars
     var pokestopCount = []
     var pokestopTotal = 0
     var pokeStatTable = $('#pokemonList_table').DataTable()
+	var $selectGymMarkerStyle = $('#gym-marker-style')
 
     // Bounds of the currently visible map
     var currentVisibleMap = map.getBounds()
@@ -91,13 +92,13 @@ function countMarkers(map) { // eslint-disable-line no-unused-vars
         for (i = 0; i < arenaCount.length; i++) {
             if (arenaCount[i] > 0) {
                 if (i === 1) {
-                    arenaListString += '<tr><td><img src="static/forts/Mystic.png" /></td><td>' + i8ln('Blau') + '</td><td>' + arenaCount[i] + '</td><td>' + Math.round(arenaCount[i] * 100 / arenaTotal * 10) / 10 + '%</td></tr>'
+                    arenaListString += '<tr><td><img src="static/forts/'+ Store.get('gymMarkerStyle') + '/Mystic.png" width="60" heigth="60" /></td><td>' + i8ln('Blau') + '</td><td>' + arenaCount[i] + '</td><td>' + Math.round(arenaCount[i] * 100 / arenaTotal * 10) / 10 + '%</td></tr>'
                 } else if (i === 2) {
-                    arenaListString += '<tr><td><img src="static/forts/Valor.png" /></td><td>' + i8ln('Rot') + '</td><td>' + arenaCount[i] + '</td><td>' + Math.round(arenaCount[i] * 100 / arenaTotal * 10) / 10 + '%</td></tr>'
+                    arenaListString += '<tr><td><img src="static/forts/'+ Store.get('gymMarkerStyle') + '/Valor.png" width="60" heigth="60" /></td><td>' + i8ln('Rot') + '</td><td>' + arenaCount[i] + '</td><td>' + Math.round(arenaCount[i] * 100 / arenaTotal * 10) / 10 + '%</td></tr>'
                 } else if (i === 3) {
-                    arenaListString += '<tr><td><img src="static/forts/Instinct.png" /></td><td>' + i8ln('Gelb') + '</td><td>' + arenaCount[i] + '</td><td>' + Math.round(arenaCount[i] * 100 / arenaTotal * 10) / 10 + '%</td></tr>'
+                    arenaListString += '<tr><td><img src="static/forts/'+ Store.get('gymMarkerStyle') + '/Instinct.png" width="60" heigth="60" /></td><td>' + i8ln('Gelb') + '</td><td>' + arenaCount[i] + '</td><td>' + Math.round(arenaCount[i] * 100 / arenaTotal * 10) / 10 + '%</td></tr>'
                 } else {
-                    arenaListString += '<tr><td><img src="static/forts/Uncontested.png" /></td><td>' + i8ln('Weiß') + '</td><td>' + arenaCount[i] + '</td><td>' + Math.round(arenaCount[i] * 100 / arenaTotal * 10) / 10 + '%</td></tr>'
+                    arenaListString += '<tr><td><img src="static/forts/'+ Store.get('gymMarkerStyle') + '/Uncontested.png" width="60" heigth="60" /></td><td>' + i8ln('Weiß') + '</td><td>' + arenaCount[i] + '</td><td>' + Math.round(arenaCount[i] * 100 / arenaTotal * 10) / 10 + '%</td></tr>'
                 }
             }
         }

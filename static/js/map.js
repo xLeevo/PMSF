@@ -995,10 +995,17 @@ function getGymMarkerIcon(item) {
             exIcon +
             '</div>'
     } else {
+    if (team === 0) {
+        return '<div>' +
+            '<img src="static/forts/' + Store.get('gymMarkerStyle') + '/' + gymTypes[item['team_id']] + '.png" style="width:48px;height: auto;"/>' +
+            exIcon +
+            '</div>'
+		} else {
         return '<div>' +
             '<img src="static/forts/' + Store.get('gymMarkerStyle') + '/' + gymTypes[item['team_id']] + '_' + (6 - item['slots_available']) + '.png" style="width:48px;height: auto;"/>' +
             exIcon +
             '</div>'
+		}
     }
 }
 

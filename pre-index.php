@@ -719,6 +719,7 @@ if ($blockIframe) {
                     <option value="ingame">'.i8ln('InGame').'</option>
                     <option value="shield">'.i8ln('Schilder').'</option>
                     <option value="classic">'.i8ln('Klassisch').'</option>
+                    <option value="idol">'.i8ln('Götter').'</option>
                 </select>
             </div>';
             }

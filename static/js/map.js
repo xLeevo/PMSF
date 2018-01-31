@@ -333,7 +333,7 @@ function createLocationMarker() {
     locationMarker.setIcon(searchMarkerStyles[Store.get('locationMarkerStyle')].icon)
 
     locationMarker.infoWindow = new google.maps.InfoWindow({
-        content: '<div><b>My Location</b></div>',
+        content: '<div><b>Deine Position</b></div>',
         disableAutoPan: true
     })
 
@@ -651,7 +651,7 @@ function gymLabel(item) {
     if (lastScanned != null) {
         lastScannedStr =
             '<div>' +
-            i8ln('Last Scanned') + ' : ' + getDateStr(lastScanned) + ' ' + getTimeStr(lastScanned) +
+            i8ln('Zuletzt gescannt') + ' : ' + getDateStr(lastScanned) + ' ' + getTimeStr(lastScanned) +
             '</div>'
     }
 
@@ -676,11 +676,11 @@ function gymLabel(item) {
             park +
             '</div>' +
             '<div>' +
-            i8ln('Location') + '<a href="javascript:void(0);" onclick="javascript:openMapDirections(' + latitude + ',' + longitude + ');" title="' + i8ln('View in Maps') + '">' + latitude.toFixed(6) + ' , ' + longitude.toFixed(7) + '</a>' +
+            '<a href="javascript:void(0);" onclick="javascript:openMapDirections(' + latitude + ',' + longitude + ');" title="' + i8ln('View in Maps') + '">' + i8ln('Navigation öffnen') + '</a>' +
             '</div>' +
             '<div>' +
 
-            i8ln('Last Modified') + ' : ' + lastModifiedStr +
+            i8ln('Zuletzt geändert') + ' : ' + lastModifiedStr +
             '</div>' +
             '<div>' +
             lastScannedStr +
@@ -698,7 +698,7 @@ function gymLabel(item) {
             '<center>' +
             '<div style="padding-bottom: 2px">' +
 
-            i8ln('Gym owned by') + ' : ' +
+            i8ln('Arena besetzt von') + ' : ' +
             '</div>' +
             '<div>' +
             '<b style="color:rgba(' + gymColor[teamId] + ')">' + i8ln('Team') + ' ' + i8ln(teamName) + '</b><br>' +
@@ -707,7 +707,7 @@ function gymLabel(item) {
             '</div>' +
             nameStr +
             raidStr +
-            '<div><b>' + freeSlots + ' ' + i8ln('Free Slots') + '</b></div>' +
+            '<div><b>' + i8ln('Freie Plätze:') + ' ' + freeSlots + '</b></div>' +
             '<div>' +
             park +
             '</div>' +
@@ -716,11 +716,11 @@ function gymLabel(item) {
             memberStr +
             '</div>' +
             '<div>' +
-            i8ln('Location') + ' : <a href="javascript:void(0);" onclick="javascript:openMapDirections(' + latitude + ',' + longitude + ');" title="' + i8ln('View in Maps') + '">' + latitude.toFixed(6) + ' , ' + longitude.toFixed(7) + '</a>' +
+            '<a href="javascript:void(0);" onclick="javascript:openMapDirections(' + latitude + ',' + longitude + ');" title="' + i8ln('View in Maps') + '">' + i8ln('Navigation öffnen') + '</a>' +
             '</div>' +
-            '<div>' +
+            '<div><br>' +
 
-            i8ln('Last Modified') + ' : ' + lastModifiedStr +
+            i8ln('Zuletzt geändert') + ' : ' + lastModifiedStr +
             '</div>' +
             '<div>' +
             lastScannedStr +
@@ -2097,7 +2097,7 @@ function createMyLocationButton() {
     locationButton.style.cursor = 'pointer'
     locationButton.style.marginRight = '10px'
     locationButton.style.padding = '0px'
-    locationButton.title = 'My Location'
+    locationButton.title = 'Deine Position'
     locationContainer.appendChild(locationButton)
 
     var locationIcon = document.createElement('div')
@@ -2289,7 +2289,7 @@ function showGymDetails(id) { // eslint-disable-line no-unused-vars
         if (result.last_scanned != null) {
             lastScannedStr =
                 '<div style="font-size: .7em">' +
-                i8ln('Last Scanned') + ' : ' + getDateStr(result.last_scanned) + ' ' + getTimeStr(result.last_scanned) +
+                i8ln('Zuletzt gescannt') + ' : ' + getDateStr(result.last_scanned) + ' ' + getTimeStr(result.last_scanned) +
                 '</div>'
         }
         var pokemon = result.pokemon !== undefined ? result.pokemon : []
@@ -2298,7 +2298,7 @@ function showGymDetails(id) { // eslint-disable-line no-unused-vars
         if (result.team_id !== 0) {
             gymLevelStr =
                 '<center class="team-' + result.team_id + '-text">' +
-                '<b class="team-' + result.team_id + '-text">' + freeSlots + ' ' + i8ln('Free Slots') + '</b>' +
+                '<b class="team-' + result.team_id + '-text">' + i8ln('Freie Plätze:') + ' ' + freeSlots + '</b>' +
                 '</center>'
         }
 
@@ -2369,11 +2369,11 @@ function showGymDetails(id) { // eslint-disable-line no-unused-vars
             park +
             '</div>' +
             '<div style="font-size: .7em">' +
-            i8ln('Last Modified') + ' : ' + lastModifiedStr +
+            i8ln('Zuletzt geändert') + ' : ' + lastModifiedStr +
             '</div>' +
             lastScannedStr +
             '<div>' +
-            '<a href=\'javascript:void(0)\' onclick=\'javascript:openMapDirections(' + result.latitude + ',' + result.longitude + ')\' title=\'' + i8ln('View in Maps') + '\'>' + i8ln('Get directions') + '</a>' +
+            '<a href=\'javascript:void(0)\' onclick=\'javascript:openMapDirections(' + result.latitude + ',' + result.longitude + ')\' title=\'' + i8ln('View in Maps') + '\'>' + i8ln('Navigation öffnen') + '</a>' +
             '</div>' +
             '</center>'
 
@@ -2473,11 +2473,11 @@ function showGymDetails(id) { // eslint-disable-line no-unused-vars
         } else {
             pokemonHtml =
                 '<center class="team-' + result.team_id + '-text">' +
-                'Gym Leader:<br>' +
+                'Arenenleiter:<br>' +
                 '<i class="pokemon-sprite-large n' + result.guard_pokemon_id + '"></i><br>' +
                 '<b class="team-' + result.team_id + '-text">' + result.guard_pokemon_name + '</b>' +
                 '<p style="font-size: .75em margin: 5px">' +
-                'No additional gym information is available for this gym. Make sure you are collecting detailed gym info. If you have detailed gym info collection running, this gym\'s Pokemon information may be out of date.' +
+                '<br>Es sind keine detaillierten Informationen für diese Arene verfügbar.' +
                 '</p>' +
                 '</center>'
         }
